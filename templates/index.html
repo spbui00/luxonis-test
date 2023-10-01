@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <title>Ads</title>
+</head>
+<body>
+    <h1>Ads scraped from sreality.cz (flats, sells)</h1>
+    {% if ads %}
+    <div class="items">
+        {% for ad in ads %}
+        <div class="item">
+            <div class="title">
+                {{ad[1]}}
+            </div>
+            <div class="images">
+                {% for url in ad[2] %}
+                <img src="{{url}}"/>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No ads available.</p>
+    {% endif %}
+</body>
+</html>
